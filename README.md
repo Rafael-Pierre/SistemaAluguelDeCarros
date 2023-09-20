@@ -25,3 +25,4 @@ Eu, como um Agente, desejo analisar os pedidos de aluguel dos clientes em termos
 
 ### Como um agente (empresa ou banco), eu quero poder executar contratos de aluguel após a aprovação dos pedidos.
 Eu, como um Agente, desejo poder seguir em frente com a execução dos contratos de aluguel após aprovar os pedidos dos clientes.
+
