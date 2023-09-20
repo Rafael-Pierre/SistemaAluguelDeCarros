@@ -1,0 +1,21 @@
+# Docker Compose file for Cropwise Crops Catalog (QA)
+# Note: Some env variables are interpolated at runtime, set them via 'export'
+# or use a .env file in the same directory as docker-compose.yml.
+
+version: '3.3'
+
+services:
+  database:
+    image: postgres:10.17
+    restart: always
+    container_name: 'lab_locadora'
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_DB: 'lab_locadora'
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    ports:
+      - '5435:5432'
+volumes:
+  pg-data:
