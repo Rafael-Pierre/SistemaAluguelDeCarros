@@ -5,8 +5,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from '../auth/module/auth.module';
 import { APP_FILTER, APP_GUARD } from '@nestjs/core';
 import { HttpExceptionFilter } from '../core/errors/http-exception.filters';
-import {RolesGuard} from "../core/roles/roles.guard";
-import {CarModule} from "../car/module/car.module";
+import { RolesGuard } from '../core/roles/roles.guard';
+import { CarModule } from '../car/module/car.module';
 
 @Module({
   imports: [
@@ -27,7 +27,7 @@ import {CarModule} from "../car/module/car.module";
     {
       provide: APP_GUARD,
       useClass: RolesGuard,
-    }
+    },
   ],
 })
 export class AppModule {}
