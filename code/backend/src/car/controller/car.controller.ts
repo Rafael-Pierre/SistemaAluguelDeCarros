@@ -35,12 +35,4 @@ export class CarController {
     return carsNotRented.map((c) => carToCarDTO(c));
   }
 
-  @Post('/rent/:id')
-  @Roles(Role.Agent, Role.Bank)
-  @HttpCode(HttpStatus.OK)
-  async rentACar(
-    @Param('id', new ParseUUIDPipe()) carId: string,
-  ): Promise<void> {
-    await this.carService.rentACar(carId);
-  }
 }

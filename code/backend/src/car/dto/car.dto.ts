@@ -16,6 +16,8 @@ export class CarDTO {
   model: string;
 
   license_plate: string;
+  is_rented: boolean;
+  daily_rate: number;
 }
 export function carToCarDTO(car: Car): CarDTO {
   return new CarDTO({
@@ -25,5 +27,7 @@ export function carToCarDTO(car: Car): CarDTO {
     brand: car.brand,
     model: car.model,
     license_plate: car.license_plate,
+    is_rented: car.is_rented,
+    daily_rate: car.daily_rate,
   });
 }
