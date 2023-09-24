@@ -1,6 +1,6 @@
 import { User } from '../entity/user.entity';
-import { IsEmail, IsString, Length, IsIn } from 'class-validator';
-import {Role} from "../../core/roles/roles.enum";
+import { IsEmail, IsString, Length } from 'class-validator';
+import { Role } from '../../core/roles/roles.enum';
 
 export class CreateUserDTO {
   @IsString()
@@ -16,7 +16,7 @@ export class CreateUserDTO {
   @Length(11)
   cpf: string;
 
-  role: Role
+  role: Role;
 }
 
 export function createUserDTOToUser(createUserDTO: CreateUserDTO): User {

@@ -14,11 +14,11 @@ export class UserDTO {
 }
 
 export function userToUserDTO(user: User): UserDTO {
-    return new UserDTO({
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        cpf: user.cpf,
-        role: user.role,
-    });
+  return new UserDTO({
+    id: user.id,
+    name: user.name,
+    email: user.email,
+    cpf: user.cpf,
+    role: user.role,
+  });
 }
