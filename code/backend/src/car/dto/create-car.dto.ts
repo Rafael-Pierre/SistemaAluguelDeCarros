@@ -12,6 +12,9 @@ export class CreateCarDTO {
   model: string;
   @IsString()
   license_plate: string;
+
+  @IsNumber()
+  daily_rate: number;
 }
 export function createCarDTOToCar(createCarDTO: CreateCarDTO): Car {
   return new Car({
@@ -20,5 +23,6 @@ export function createCarDTOToCar(createCarDTO: CreateCarDTO): Car {
     brand: createCarDTO.brand,
     model: createCarDTO.model,
     license_plate: createCarDTO.license_plate,
+    daily_rate: createCarDTO.daily_rate,
   });
 }

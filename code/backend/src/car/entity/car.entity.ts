@@ -23,4 +23,7 @@ export class Car {
 
   @Column({ type: 'boolean' })
   is_rented: boolean;
+
+  @Column({ type: 'float' })
+  daily_rate: number;
 }

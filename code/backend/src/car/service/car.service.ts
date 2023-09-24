@@ -17,11 +17,12 @@ export class CarService {
     return this.carRepository.find({ where: { is_rented: false } });
   }
 
-  async rentACar(carId: string): Promise<void> {
-    const car = await this.carRepository.findOne({ where: { id: carId } });
-    if (car) {
-      car.is_rented = true;
-      await this.carRepository.save(car);
-    }
+  async getCarById(id: string): Promise<Car> {
+    return this.carRepository.findOne({ where: { id: id } });
+  }
+
+  async rentACar(car: Car): Promise<void> {
+    car.is_rented = true;
+    await this.carRepository.save(car);
   }
 }
