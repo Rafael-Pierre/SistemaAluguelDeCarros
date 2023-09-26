@@ -1,9 +1,17 @@
 import { Button, Form, Input, Radio, Select } from "antd";
+import axios from "axios";
 import Link from "next/link";
 import { useState } from "react";
 
-const onFinish = (values: any) => {
+const onFinish = async (values: any) => {
   console.log("Success:", values);
+
+  try {
+    const response = await postUser(values); // Supondo que "values" contenha os dados do carro
+    console.log("Response from server:", response);
+  } catch (error) {
+    console.error("Error:", error);
+  }
 };
 
 const onFinishFailed = (errorInfo: any) => {
@@ -18,6 +26,18 @@ type FieldType = {
   profissao?: string;
   email?: string;
   senha?: string;
+};
+
+const postUser = async (dataUser: {
+  name: string;
+  password: string;
+  email: string;
+  cpf: string;
+  role: string;
+}) => {
+  const response = await axios.post("localhost:5500/user", dataUser);
+
+  return response.data;
 };
 
 function FormUsuarios() {
@@ -43,9 +63,9 @@ function FormUsuarios() {
     >
       <Form.Item label="Qual o seu tipo de usuário">
         <Radio.Group onChange={handleRadioChange} value={tipoUsuario}>
-          <Radio value="empresa"> Empresa </Radio>
-          <Radio value="banco"> Banco </Radio>
-          <Radio value="cliente"> Cliente </Radio>
+          <Radio value="agent"> Empresa </Radio>
+          <Radio value="bank"> Banco </Radio>
+          <Radio value="client"> Cliente </Radio>
         </Radio.Group>
       </Form.Item>
 
