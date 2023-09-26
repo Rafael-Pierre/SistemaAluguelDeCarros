@@ -30,15 +30,7 @@ export default function Home() {
         </Card>
       </Link>
 
-      <Link href={"/aluguel"} className="link">
-        <Card className="cards" hoverable>
-          <CreditCardOutlined className="icons" />
-          <br />
-          Cadastre um aluguel
-        </Card>
-      </Link>
-
-      <Link href={"/aluguel"} className="link">
+      <Link href={"/request"} className="link">
         <Card className="cards" hoverable>
           <IdcardOutlined className="icons" />
           <br />

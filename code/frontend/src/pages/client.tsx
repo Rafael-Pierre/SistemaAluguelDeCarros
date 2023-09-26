@@ -143,7 +143,7 @@ const App: React.FC = () => {
         Sair
       </Link>
       <div className="cards-client">
-        <h1 className="title">Veja novos alugeis:</h1>
+        <h1 className="title">Carros para alugar:</h1>
         <Space direction="vertical" size={16}>
           {cars.map((car) => (
             <Card
@@ -177,7 +177,7 @@ const App: React.FC = () => {
       </div>
       <Divider className="divider" type="vertical" />
       <div className="cards-client">
-        <h1 className="title">Seus alugueis:</h1>
+        <h1 className="title">Minhas Solicitações:</h1>
         <Space direction="vertical" size={16}>
           {requestInfo.map((reqInfo) => (
             <Card
