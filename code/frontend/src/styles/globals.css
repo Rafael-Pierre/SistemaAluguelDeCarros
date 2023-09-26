@@ -106,7 +106,7 @@
   gap: 10rem;
 }
 
-.cards-client{
+.cards-client {
   display: flex;
   flex-direction: column;
 }
@@ -115,6 +115,7 @@
   font-size: 100vh;
   font-weight: bold;
 }
+
 body {
   background-color: #27303b;
   color: #fff !important;
@@ -168,4 +169,10 @@ a {
 
 rules {
   width: 200px;
+}
+
+.linksaida {
+  position: absolute;
+  left: 0;
+  top: 0;
 }
