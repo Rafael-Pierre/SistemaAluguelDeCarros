@@ -1,6 +1,6 @@
 import { CarDTO, carToCarDTO } from '../../car/dto/car.dto';
 import { UserDTO, userToUserDTO } from '../../user/dto/user.dto';
-import { RentRequest } from '../entity/rent-request.entity';
+import {RentRequest, StatusENUM} from '../entity/rent-request.entity';
 
 export class RentRequestDTO {
   constructor(data?: Partial<RentRequestDTO>) {
@@ -14,6 +14,7 @@ export class RentRequestDTO {
   car: CarDTO;
   user: UserDTO;
   total_value: number;
+  status: StatusENUM;
 }
 
 export function rentRequestToRentRequestDTO(
@@ -35,5 +36,6 @@ export function rentRequestToRentRequestDTO(
     car: carToCarDTO(rentRequest.car),
     user: userToUserDTO(rentRequest.user),
     total_value: getTotalValue(),
+    status: rentRequest.status,
   });
 }
