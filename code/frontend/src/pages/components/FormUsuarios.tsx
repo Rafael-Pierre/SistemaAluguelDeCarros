@@ -7,7 +7,7 @@ const onFinish = async (values: any) => {
   console.log("Success:", values);
 
   try {
-    const response = await postUser(values); // Supondo que "values" contenha os dados do carro
+    const response = await postUser(values);
     console.log("Response from server:", response);
   } catch (error) {
     console.error("Error:", error);
@@ -19,13 +19,10 @@ const onFinishFailed = (errorInfo: any) => {
 };
 
 type FieldType = {
-  nome?: string;
-  rendimentos?: number;
-  cpfs?: string;
-  endereco?: string;
-  profissao?: string;
+  name?: string;
+  cpf?: string;
   email?: string;
-  senha?: string;
+  password?: string;
 };
 
 const postUser = async (dataUser: {
@@ -35,19 +32,19 @@ const postUser = async (dataUser: {
   cpf: string;
   role: string;
 }) => {
-  const response = await axios.post("localhost:5500/user", dataUser);
-
+  const response = await axios.post("http://localhost:5500/user", dataUser);
+  console.log("aaaa");
   return response.data;
 };
 
 function FormUsuarios() {
   const [componentDisabled, setComponentDisabled] = useState<boolean>(true);
 
-  const [tipoUsuario, setTipoUsuario] = useState<string>("cliente");
+  const [tipoUsuario, setTipoUsuario] = useState<string>("client");
 
   const handleRadioChange = (e: any) => {
     setTipoUsuario(e.target.value);
-    setComponentDisabled(e.target.value !== "cliente");
+    setComponentDisabled(e.target.value !== "client");
   };
 
   return (
@@ -61,17 +58,17 @@ function FormUsuarios() {
       onFinishFailed={onFinishFailed}
       autoComplete="off"
     >
-      <Form.Item label="Qual o seu tipo de usuário">
+      <Form.Item label="Qual o seu tipo de usuário" name="role">
         <Radio.Group onChange={handleRadioChange} value={tipoUsuario}>
           <Radio value="agent"> Empresa </Radio>
           <Radio value="bank"> Banco </Radio>
-          <Radio value="client"> Cliente </Radio>
+          <Radio value="client"> client </Radio>
         </Radio.Group>
       </Form.Item>
 
       <Form.Item<FieldType>
         label="Nome"
-        name="nome"
+        name="name"
         rules={[{ required: true, message: "Digite o Nome!" }]}
       >
         <Input />
@@ -79,26 +76,10 @@ function FormUsuarios() {
 
       <Form.Item<FieldType>
         label="cpf/cnpj"
-        name="cpfs"
+        name="cpf"
         rules={[{ required: true, message: "Digite o cpf/cnpj!" }]}
       >
         <Input />
-      </Form.Item>
-
-      <Form.Item<FieldType>
-        label="Endereço"
-        name="endereco"
-        rules={[{ required: true, message: "Digite o endereço!" }]}
-      >
-        <Input />
-      </Form.Item>
-
-      <Form.Item<FieldType> label="Profissão" name="profissao">
-        <Input disabled={componentDisabled} />
-      </Form.Item>
-
-      <Form.Item<FieldType> label="Rendimentos totais" name="rendimentos">
-        <Input disabled={componentDisabled} />
       </Form.Item>
 
       <Form.Item<FieldType>
@@ -113,7 +94,7 @@ function FormUsuarios() {
 
       <Form.Item<FieldType>
         label="Senha"
-        name="senha"
+        name="password"
         rules={[{ required: true, message: "Digite uma senha!" }]}
       >
         <Input.Password />

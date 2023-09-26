@@ -1,8 +1,18 @@
 import { Button, Checkbox, Form, Input } from "antd";
+import axios from "axios";
 import Link from "next/link";
 
-const onFinish = (values: any) => {
+const onFinish = async (values: any) => {
   console.log("Success:", values);
+
+  try {
+    const response = await axios.post("http://localhost:5500/auth", values);
+
+    localStorage.setItem("token", response.data.access_token);
+    return response.data;
+  } catch (error) {
+    console.error("Error:", error);
+  }
 };
 
 const onFinishFailed = (errorInfo: any) => {
@@ -10,9 +20,8 @@ const onFinishFailed = (errorInfo: any) => {
 };
 
 type FieldType = {
-  username?: string;
+  email?: string;
   password?: string;
-  remember?: string;
 };
 
 const App: React.FC = () => (
@@ -30,8 +39,8 @@ const App: React.FC = () => (
       autoComplete="off"
     >
       <Form.Item<FieldType>
-        label="Username"
-        name="username"
+        label="email"
+        name="email"
         rules={[{ required: true, message: "Please input your username!" }]}
       >
         <Input />
