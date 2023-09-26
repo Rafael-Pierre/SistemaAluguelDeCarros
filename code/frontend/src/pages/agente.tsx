@@ -10,6 +10,16 @@ import {
 export default function Home() {
   return (
     <div className="forms">
+      <Link
+        className="linksaida"
+        onClick={() => {
+          localStorage.removeItem("token");
+        }}
+        href={"/login"}
+      >
+        Sair
+      </Link>
+
       <h1 className="title">Seja bem-vindo Agente!</h1>
 
       <Link href={"/carros"} className="link">

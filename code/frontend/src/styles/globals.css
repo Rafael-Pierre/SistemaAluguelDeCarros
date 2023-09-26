@@ -106,7 +106,7 @@
   gap: 10rem;
 }
 
-.cards-client{
+.cards-client {
   display: flex;
   flex-direction: column;
 }
@@ -115,6 +115,7 @@
   font-size: 100vh;
   font-weight: bold;
 }
+
 body {
   background-color: #27303b;
   color: #fff !important;
@@ -189,4 +190,10 @@ rules {
   margin-left: 5px;
   margin-bottom: 16px;
   /* Outros estilos para os cards, como espaçamento interno, bordas, etc. */
+}
+
+.linksaida {
+  position: absolute;
+  left: 0;
+  top: 0;
 }
