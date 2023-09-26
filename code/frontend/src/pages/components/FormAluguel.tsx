@@ -48,14 +48,15 @@ const FormCarros: React.FC = () => (
       label="Selecione um carro"
       rules={[{ required: true }]}
     >
-      <Select placeholder="Selecione o carro" allowClear>
+      <Select defaultValue="" allowClear>
+        <Option value="">Selecione o carro</Option>
         <Option value="male">male</Option>
         <Option value="female">female</Option>
         <Option value="other">other</Option>
       </Select>
     </Form.Item>
 
-    <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+    <Form.Item wrapperCol={{ offset: 10, span: 16 }}>
       <Button type="primary" htmlType="submit">
         Cadastrar
       </Button>
