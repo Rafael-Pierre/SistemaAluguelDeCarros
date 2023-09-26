@@ -82,7 +82,7 @@ const App: React.FC = () => {
             end: endDate,
         }
         console.log(payload)
-        const request = await axios.post("http://localhost:5500/rent-request",payload, {headers});
+        await axios.post("http://localhost:5500/rent-request",payload, {headers});
         setReload(!reload);
     };
 
