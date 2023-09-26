@@ -156,11 +156,10 @@ const App: React.FC = () => {
                          style={{ width: 300 }}
                      >
                          <p><strong>Início:</strong> {reqInfo.start}</p>
-                         <p><strong>Fim:</strong> {reqInfo.start}</p>
+                         <p><strong>Fim:</strong> {reqInfo.end}</p>
                          <p><strong>Valor total:</strong> R$ {reqInfo.total_value}</p>
                          <p><strong>Carro escolhido:</strong> {reqInfo.car.model}</p>
                          <p><strong>Ano do carro:</strong> {reqInfo.car.year}</p>
-                         <p><strong>Status:</strong> {reqInfo.status}</p>
                          <Button style={{ color: "white", backgroundColor: getStatusColor(reqInfo.status) }}>
                              Status: {reqInfo.status}
                          </Button>

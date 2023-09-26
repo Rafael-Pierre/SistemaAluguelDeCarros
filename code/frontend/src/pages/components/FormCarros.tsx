@@ -18,121 +18,130 @@ const onFinishFailed = (errorInfo: any) => {
 
 type FieldType = {
   renavam?: string;
-  ano?: number;
-  placa?: string;
-  marca?: string;
-  modelo?: string;
-  daily?: number;
+  year?: number;
+  license_plate?: string;
+  brand?: string;
+  model?: string;
+  daily_rate?: number;
 };
 
 const postCar = async (dataCar: {
   renavam: string;
-  ano: number;
-  marca: string;
-  modelo: string;
-  placa: string;
-  daily: number;
+  year: string;
+  license_plate: string;
+  brand: string;
+  model: string;
+  daily_rate: string;
 }) => {
   const headers = {
     "Content-Type": "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNGUzMzZiNy1hNzgwLTQxMjMtYjM3NS0zMTgyN2M4OWFkYTIiLCJ1c2VybmFtZSI6IjFAY2xpZW50LmNvbSIsInJvbGUiOiJjbGllbnQiLCJpYXQiOjE2OTU2ODUyMjQsImV4cCI6MTY5NTY5MTIyNH0.igsB0uPht8ZZEAwyzGBKnr3xfct5r_fjsoTWqKF56d4",
+    Authorization: `Bearer ${localStorage.getItem("token")}`,
   };
 
-  const response = await axios.post("localhost:5500/car", dataCar, { headers });
+  const response = await axios.post(
+      "http://localhost:5500/car",
+      {
+        ...dataCar,
+        year: parseInt(JSON.parse(dataCar.year)),
+        daily_rate: parseInt(JSON.parse(dataCar.daily_rate)),
+      },
+      {
+        headers,
+      }
+  );
 
   return response.data;
 };
 
 const FormCarros: React.FC = () => (
-  <Form
-    name="basic"
-    labelCol={{ span: 8 }}
-    wrapperCol={{ span: 20 }}
-    style={{ maxWidth: 800 }}
-    initialValues={{ remember: true }}
-    onFinish={onFinish}
-    onFinishFailed={onFinishFailed}
-    autoComplete="off"
-  >
-    <Form.Item<FieldType>
-      label="Renavam"
-      name="renavam"
-      rules={[{ required: true, message: "Digite o renavam!" }]}
+    <Form
+        name="basic"
+        labelCol={{ span: 8 }}
+        wrapperCol={{ span: 16 }}
+        style={{ maxWidth: 600 }}
+        initialValues={{ remember: true }}
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+        autoComplete="off"
     >
-      <Input />
-    </Form.Item>
+      <Form.Item<FieldType>
+          label="Renavam"
+          name="renavam"
+          rules={[{ required: true, message: "Digite o renavam!" }]}
+      >
+        <Input />
+      </Form.Item>
 
-    <Form.Item<FieldType>
-      label="Ano"
-      name="ano"
-      rules={[
-        { required: true, message: "Digite o ano do carro!" },
-        {
-          type: "integer",
-          message: "Por favor, insira um número inteiro para o ano!",
-          transform: (value) => {
-            if (!isNaN(Number(value))) {
-              return Number(value);
-            }
-            return value;
-          },
-        },
-      ]}
-    >
-      <Input />
-    </Form.Item>
+      <Form.Item<FieldType>
+          label="Ano"
+          name="year"
+          rules={[
+            { required: true, message: "Digite o ano do carro!" },
+            {
+              type: "integer",
+              message: "Por favor, insira um número inteiro para o ano!",
+              transform: (value) => {
+                if (!isNaN(Number(value))) {
+                  return Number(value);
+                }
+                return value;
+              },
+            },
+          ]}
+      >
+        <Input />
+      </Form.Item>
 
-    <Form.Item<FieldType>
-      label="Marca"
-      name="marca"
-      rules={[{ required: true, message: "Digite a marca do carro!" }]}
-    >
-      <Input />
-    </Form.Item>
+      <Form.Item<FieldType>
+          label="Marca"
+          name="brand"
+          rules={[{ required: true, message: "Digite a marca do carro!" }]}
+      >
+        <Input />
+      </Form.Item>
 
-    <Form.Item<FieldType>
-      label="Modelo"
-      name="modelo"
-      rules={[{ required: true, message: "Digite a modelo do carro!" }]}
-    >
-      <Input />
-    </Form.Item>
+      <Form.Item<FieldType>
+          label="Modelo"
+          name="model"
+          rules={[{ required: true, message: "Digite a modelo do carro!" }]}
+      >
+        <Input />
+      </Form.Item>
 
-    <Form.Item<FieldType>
-      label="Placa"
-      name="placa"
-      rules={[{ required: true, message: "Digite a placa!" }]}
-    >
-      <Input />
-    </Form.Item>
+      <Form.Item<FieldType>
+          label="Placa"
+          name="license_plate"
+          rules={[{ required: true, message: "Digite a placa!" }]}
+      >
+        <Input />
+      </Form.Item>
 
-    <Form.Item<FieldType>
-      label="Daily rate"
-      name="daily"
-      rules={[
-        { required: true, message: "Digite o Daily rate!" },
-        {
-          type: "integer",
-          message: "Por favor, insira um número inteiro para o Daily rate!",
-          transform: (value) => {
-            if (!isNaN(Number(value))) {
-              return Number(value);
-            }
-            return value;
-          },
-        },
-      ]}
-    >
-      <Input />
-    </Form.Item>
+      <Form.Item<FieldType>
+          label="Daily rate"
+          name="daily_rate"
+          rules={[
+            { required: true, message: "Digite o Daily rate!" },
+            {
+              type: "integer",
+              message: "Por favor, insira um número inteiro para o Daily rate!",
+              transform: (value) => {
+                if (!isNaN(Number(value))) {
+                  return Number(value);
+                }
+                return value;
+              },
+            },
+          ]}
+      >
+        <Input />
+      </Form.Item>
 
-    <Form.Item wrapperCol={{ offset: 12, span: 16 }}>
-      <Button type="primary" htmlType="submit">
-        Cadastrar
-      </Button>
-    </Form.Item>
-  </Form>
+      <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+        <Button type="primary" htmlType="submit">
+          Cadastrar
+        </Button>
+      </Form.Item>
+    </Form>
 );
 
 export default FormCarros;
