@@ -170,6 +170,27 @@ a {
 rules {
   width: 200px;
 }
+.btn-app-dn {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cards-request {
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Isso distribuirá os cards igualmente nas linhas */
+}
+
+.card {
+  margin-left: 5px;
+  margin-bottom: 16px;
+  /* Outros estilos para os cards, como espaçamento interno, bordas, etc. */
+}
 
 .linksaida {
   position: absolute;

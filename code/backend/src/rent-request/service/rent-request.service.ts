@@ -1,10 +1,10 @@
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { RentRequest, StatusENUM } from '../entity/rent-request.entity';
-import { Repository } from 'typeorm';
-import { CreateRentRequestDTO } from '../dto/create-rent-request.dto';
-import { CarService } from '../../car/service/car.service';
-import { UserService } from '../../user/service/user.service';
+import {Injectable} from '@nestjs/common';
+import {InjectRepository} from '@nestjs/typeorm';
+import {RentRequest, StatusENUM} from '../entity/rent-request.entity';
+import {Repository} from 'typeorm';
+import {CreateRentRequestDTO} from '../dto/create-rent-request.dto';
+import {CarService} from '../../car/service/car.service';
+import {UserService} from '../../user/service/user.service';
 
 @Injectable()
 export class RentRequestService {
@@ -46,5 +46,9 @@ export class RentRequestService {
 
   async getRequestByUserId(id: string): Promise<RentRequest[]> {
     return this.rentRequestRepository.find({ where: { user: { id: id } } });
+  }
+
+  async getAllRentRequestPending(): Promise<RentRequest[]> {
+    return this.rentRequestRepository.find({where:{status: StatusENUM.PENDING}})
   }
 }

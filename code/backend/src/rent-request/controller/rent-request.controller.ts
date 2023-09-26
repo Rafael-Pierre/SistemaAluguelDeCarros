@@ -61,4 +61,10 @@ export class RentRequestController {
     const request = await this.rentRequestService.getRequestByUserId(requestId);
     return request.map((r) => rentRequestToRentRequestDTO(r));
   }
+
+  @Get()
+  async getAllRentPendingRentRequest(): Promise<RentRequestDTO[]> {
+    const request = await this.rentRequestService.getAllRentRequestPending();
+    return request.map((r) => rentRequestToRentRequestDTO(r));
+  }
 }
