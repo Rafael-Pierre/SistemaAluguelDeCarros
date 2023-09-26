@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div>
       <Link href={"/agente"}>
-        <ArrowLeftOutlined /> Back
+        <ArrowLeftOutlined /> Voltar
       </Link>
       <div className="forms">
         <h1 className="title">Cadastre o Aluguel</h1>
