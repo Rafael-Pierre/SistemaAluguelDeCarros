@@ -53,14 +53,14 @@ const App: React.FC = () => (
         <Input.Password />
       </Form.Item>
 
-      <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+      <Form.Item wrapperCol={{ offset: 10, span: 16 }}>
         <Button type="primary" htmlType="submit">
           Submit
         </Button>
       </Form.Item>
 
       <div>
-        <Link href={"/cadastro"}>Não possui conta? Crie a sua.</Link>
+        <Link className="linkLogin" href={"/cadastro"}>Não possui conta? Crie a sua.</Link>
       </div>
     </Form>
   </div>
