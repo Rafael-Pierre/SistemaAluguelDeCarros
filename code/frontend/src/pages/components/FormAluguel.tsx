@@ -48,7 +48,8 @@ const FormCarros: React.FC = () => (
       label="Selecione um carro"
       rules={[{ required: true }]}
     >
-      <Select placeholder="Selecione o carro" allowClear>
+      <Select allowClear defaultValue="">
+        <Option value="">Selecione o carro</Option>
         <Option value="male">male</Option>
         <Option value="female">female</Option>
         <Option value="other">other</Option>

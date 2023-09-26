@@ -39,109 +39,109 @@ const postCar = async (dataCar: {
   };
 
   const response = await axios.post(
-    "http://localhost:5500/car",
-    {
-      ...dataCar,
-      year: parseInt(JSON.parse(dataCar.year)),
-      daily_rate: parseInt(JSON.parse(dataCar.daily_rate)),
-    },
-    {
-      headers,
-    }
+      "http://localhost:5500/car",
+      {
+        ...dataCar,
+        year: parseInt(JSON.parse(dataCar.year)),
+        daily_rate: parseInt(JSON.parse(dataCar.daily_rate)),
+      },
+      {
+        headers,
+      }
   );
 
   return response.data;
 };
 
 const FormCarros: React.FC = () => (
-  <Form
-    name="basic"
-    labelCol={{ span: 8 }}
-    wrapperCol={{ span: 16 }}
-    style={{ maxWidth: 600 }}
-    initialValues={{ remember: true }}
-    onFinish={onFinish}
-    onFinishFailed={onFinishFailed}
-    autoComplete="off"
-  >
-    <Form.Item<FieldType>
-      label="Renavam"
-      name="renavam"
-      rules={[{ required: true, message: "Digite o renavam!" }]}
+    <Form
+        name="basic"
+        labelCol={{ span: 8 }}
+        wrapperCol={{ span: 16 }}
+        style={{ maxWidth: 600 }}
+        initialValues={{ remember: true }}
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+        autoComplete="off"
     >
-      <Input />
-    </Form.Item>
+      <Form.Item<FieldType>
+          label="Renavam"
+          name="renavam"
+          rules={[{ required: true, message: "Digite o renavam!" }]}
+      >
+        <Input />
+      </Form.Item>
 
-    <Form.Item<FieldType>
-      label="Ano"
-      name="year"
-      rules={[
-        { required: true, message: "Digite o ano do carro!" },
-        {
-          type: "integer",
-          message: "Por favor, insira um número inteiro para o ano!",
-          transform: (value) => {
-            if (!isNaN(Number(value))) {
-              return Number(value);
-            }
-            return value;
-          },
-        },
-      ]}
-    >
-      <Input />
-    </Form.Item>
+      <Form.Item<FieldType>
+          label="Ano"
+          name="year"
+          rules={[
+            { required: true, message: "Digite o ano do carro!" },
+            {
+              type: "integer",
+              message: "Por favor, insira um número inteiro para o ano!",
+              transform: (value) => {
+                if (!isNaN(Number(value))) {
+                  return Number(value);
+                }
+                return value;
+              },
+            },
+          ]}
+      >
+        <Input />
+      </Form.Item>
 
-    <Form.Item<FieldType>
-      label="Marca"
-      name="brand"
-      rules={[{ required: true, message: "Digite a marca do carro!" }]}
-    >
-      <Input />
-    </Form.Item>
+      <Form.Item<FieldType>
+          label="Marca"
+          name="brand"
+          rules={[{ required: true, message: "Digite a marca do carro!" }]}
+      >
+        <Input />
+      </Form.Item>
 
-    <Form.Item<FieldType>
-      label="Modelo"
-      name="model"
-      rules={[{ required: true, message: "Digite a modelo do carro!" }]}
-    >
-      <Input />
-    </Form.Item>
+      <Form.Item<FieldType>
+          label="Modelo"
+          name="model"
+          rules={[{ required: true, message: "Digite a modelo do carro!" }]}
+      >
+        <Input />
+      </Form.Item>
 
-    <Form.Item<FieldType>
-      label="Placa"
-      name="license_plate"
-      rules={[{ required: true, message: "Digite a placa!" }]}
-    >
-      <Input />
-    </Form.Item>
+      <Form.Item<FieldType>
+          label="Placa"
+          name="license_plate"
+          rules={[{ required: true, message: "Digite a placa!" }]}
+      >
+        <Input />
+      </Form.Item>
 
-    <Form.Item<FieldType>
-      label="Daily rate"
-      name="daily_rate"
-      rules={[
-        { required: true, message: "Digite o Daily rate!" },
-        {
-          type: "integer",
-          message: "Por favor, insira um número inteiro para o Daily rate!",
-          transform: (value) => {
-            if (!isNaN(Number(value))) {
-              return Number(value);
-            }
-            return value;
-          },
-        },
-      ]}
-    >
-      <Input />
-    </Form.Item>
+      <Form.Item<FieldType>
+          label="Daily rate"
+          name="daily_rate"
+          rules={[
+            { required: true, message: "Digite o Daily rate!" },
+            {
+              type: "integer",
+              message: "Por favor, insira um número inteiro para o Daily rate!",
+              transform: (value) => {
+                if (!isNaN(Number(value))) {
+                  return Number(value);
+                }
+                return value;
+              },
+            },
+          ]}
+      >
+        <Input />
+      </Form.Item>
 
-    <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-      <Button type="primary" htmlType="submit">
-        Cadastrar
-      </Button>
-    </Form.Item>
-  </Form>
+      <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+        <Button type="primary" htmlType="submit">
+          Cadastrar
+        </Button>
+      </Form.Item>
+    </Form>
 );
 
 export default FormCarros;

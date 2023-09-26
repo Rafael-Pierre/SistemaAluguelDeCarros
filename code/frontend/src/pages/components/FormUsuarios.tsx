@@ -48,68 +48,68 @@ function FormUsuarios() {
   };
 
   return (
-    <Form
-      name="basic"
-      labelCol={{ span: 13 }}
-      wrapperCol={{ span: 118 }}
-      style={{ maxWidth: 600 }}
-      initialValues={{ remember: true }}
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
-      autoComplete="off"
-    >
-      <Form.Item label="Qual o seu tipo de usuário" name="role">
-        <Radio.Group onChange={handleRadioChange} value={tipoUsuario}>
-          <Radio value="agent"> Empresa </Radio>
-          <Radio value="bank"> Banco </Radio>
-          <Radio value="client"> client </Radio>
-        </Radio.Group>
-      </Form.Item>
-
-      <Form.Item<FieldType>
-        label="Nome"
-        name="name"
-        rules={[{ required: true, message: "Digite o Nome!" }]}
+      <Form
+          name="basic"
+          labelCol={{ span: 13 }}
+          wrapperCol={{ span: 118 }}
+          style={{ maxWidth: 600 }}
+          initialValues={{ remember: true }}
+          onFinish={onFinish}
+          onFinishFailed={onFinishFailed}
+          autoComplete="off"
       >
-        <Input />
-      </Form.Item>
+        <Form.Item label="Qual o seu tipo de usuário" name="role">
+          <Radio.Group onChange={handleRadioChange} value={tipoUsuario}>
+            <Radio value="agent"> Empresa </Radio>
+            <Radio value="bank"> Banco </Radio>
+            <Radio value="client"> client </Radio>
+          </Radio.Group>
+        </Form.Item>
 
-      <Form.Item<FieldType>
-        label="cpf/cnpj"
-        name="cpf"
-        rules={[{ required: true, message: "Digite o cpf/cnpj!" }]}
-      >
-        <Input />
-      </Form.Item>
+        <Form.Item<FieldType>
+            label="Nome"
+            name="name"
+            rules={[{ required: true, message: "Digite o Nome!" }]}
+        >
+          <Input />
+        </Form.Item>
 
-      <Form.Item<FieldType>
-        label="Email"
-        name="email"
-        rules={[
-          { required: true, type: "email", message: "Digite o email válido!" },
-        ]}
-      >
-        <Input />
-      </Form.Item>
+        <Form.Item<FieldType>
+            label="cpf/cnpj"
+            name="cpf"
+            rules={[{ required: true, message: "Digite o cpf/cnpj!" }]}
+        >
+          <Input />
+        </Form.Item>
 
-      <Form.Item<FieldType>
-        label="Senha"
-        name="password"
-        rules={[{ required: true, message: "Digite uma senha!" }]}
-      >
-        <Input.Password />
-      </Form.Item>
+        <Form.Item<FieldType>
+            label="Email"
+            name="email"
+            rules={[
+              { required: true, type: "email", message: "Digite o email válido!" },
+            ]}
+        >
+          <Input />
+        </Form.Item>
 
-      <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-        <Button type="primary" htmlType="submit">
-          Cadastrar
-        </Button>
-      </Form.Item>
+        <Form.Item<FieldType>
+            label="Senha"
+            name="password"
+            rules={[{ required: true, message: "Digite uma senha!" }]}
+        >
+          <Input.Password />
+        </Form.Item>
 
-      <div>
-        <Link href={"/login"}>Já possui conta? Faça o Login.</Link>
-      </div>
-    </Form>
+        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+          <Button type="primary" htmlType="submit">
+            Cadastrar
+          </Button>
+        </Form.Item>
+
+        <div>
+          <Link href={"/login"}>Já possui conta? Faça o Login.</Link>
+        </div>
+      </Form>
   );
 }
 
